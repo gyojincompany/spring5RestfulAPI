@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test">
+    <select id="getTestList" resultType="com.company.domain.Test">
+        SELECT * FROM test
+    </select>
+    <select id="getTest" resultType="com.company.domain.Test">
+        SELECT * FROM test WHERE num = #{num}
+    </select>
+    <insert id="insert">
+        INSERT into test (title) VALUES (#{title})
+    </insert>
+    <update id="update">
+        UPDATE test SET title = #{title} WHERE num = #{num}
+    </update>
+    <delete id="delete">
+        DELETE FROM test WHERE num = #{num}
+    </delete>
+</mapper>

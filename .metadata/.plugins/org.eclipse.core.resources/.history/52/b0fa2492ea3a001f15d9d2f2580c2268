@@ -1,0 +1,57 @@
+package com.company.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.company.domain.Product;
+import com.company.service.ProductService;
+
+@RestController
+@RequestMapping("/products")
+public class ProductController {
+
+    private final ProductService productService;
+
+    @Autowired
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<Product>> getProductList() {
+        List<Product> products = productService.getProductList();
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
+    @GetMapping("/detail")
+    public ResponseEntity<Product> getProduct(@RequestParam("pno") int pno) {
+        Product product = productService.getProduct(pno);
+        if (product != null) {
+            return new ResponseEntity<>(product, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("/insert")
+    public ResponseEntity<String> insertProduct(@RequestBody Product product) {
+        productService.insert(product);
+        return new ResponseEntity<>("Product inserted successfully", HttpStatus.CREATED);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<String> updateProduct(@RequestBody Product product) {
+        productService.update(product);
+        return new ResponseEntity<>("Product updated successfully", HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteProduct(@RequestParam("pno") int pno) {
+        productService.delete(pno);
+        return new ResponseEntity<>("Product deleted successfully", HttpStatus.OK);
+    }
+}

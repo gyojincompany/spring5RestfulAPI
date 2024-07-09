@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- Appenders -->
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+		</layout>
+	</appender>
+	<!-- level의 지정가능한 value:FATAL<ERROR<WARN<INFO<DEBUG<TRACE -->
+	<!-- FATAL : 심각한 시스템 이상 내용 표시 -->
+	<!-- ERROR : 요청에 대한 문제 발생시 표시 -->
+	<!-- WARN : 처리는 가능하지만 경고성 메시지 발신 표시 -->
+	<!-- INFO : 정보성 메시지 표시 -->
+	<!-- DEBUG : 실행 내용에 대한 설명을 표시 -->
+	<!-- TRACE : 실행 내용이나 추적할 경로 등을 표시 -->
+	<!-- Application Loggers -->
+	<logger name="com.company.app">
+		<level value="info" />
+	</logger>
+	
+	<logger name="com.company.controller">
+		<level value="info" />
+	</logger>
+	
+	<logger name="com.company.dao">
+		<level value="info" />
+	</logger>
+
+	<logger name="com.company.dto">
+		<level value="info" />
+	</logger>
+	
+	<logger name="com.company.service">
+		<level value="info" />
+	</logger>
+	
+	<!-- 3rdparty Loggers -->
+	<logger name="org.springframework.core">
+		<level value="info" />
+	</logger>
+	
+	<logger name="org.springframework.beans">
+		<level value="info" />
+	</logger>
+	
+	<logger name="org.springframework.context">
+		<level value="info" />
+	</logger>
+
+	<logger name="org.springframework.web">
+		<level value="info" />
+	</logger>
+
+	<!-- Root Logger -->
+	<root>
+		<priority value="warn" />
+		<appender-ref ref="console" />
+	</root>
+	
+</log4j:configuration>

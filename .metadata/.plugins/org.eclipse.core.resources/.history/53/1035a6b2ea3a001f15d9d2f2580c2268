@@ -1,0 +1,45 @@
+package com.company.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.company.domain.Product;
+import com.company.persistence.ProductMapper;
+
+@Service
+public class ProductServiceImpl implements ProductService {
+
+    private final ProductMapper productMapper;
+
+    @Autowired
+    public ProductServiceImpl(ProductMapper productMapper) {
+        this.productMapper = productMapper;
+    }
+
+    @Override
+    public List<Product> getProductList() {
+        return productMapper.getProductList();
+    }
+
+    @Override
+    public Product getProduct(int pno) {
+        return productMapper.getProduct(pno);
+    }
+
+    @Override
+    public void insert(Product product) {
+        productMapper.insert(product);
+    }
+
+    @Override
+    public void update(Product product) {
+        productMapper.update(product);
+    }
+
+    @Override
+    public void delete(int pno) {
+        productMapper.delete(pno);
+    }
+}

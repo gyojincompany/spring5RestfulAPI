@@ -1,0 +1,5 @@
+INDEX VERSION 1.4+D:\gitRepository\sunglee0517\vuejs\study08\backend\springframework5\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3684043434.index
+1970433282.index
+2399340334.index
+4078394120.index
